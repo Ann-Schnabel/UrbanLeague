@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+h2 {
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+svg {
+    opacity: .3;
+    pointer-events: none;
+}
+
+.MuiTab-wrapper {
+    color: white;
+}
+
+.MuiTabScrollButton-root svg path {
+    fill: white;
+}

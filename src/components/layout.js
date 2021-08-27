@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
     <div className="bg-gray-200 min-h-screen">
       <Nav />
       <div
-        className="px-24 py-6 max-w-96 mx-auto" 
+        className="px-24 pt-6 max-w-96 mx-auto" 
       >
         {children}
       </div>
