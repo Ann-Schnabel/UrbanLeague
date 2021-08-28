@@ -34,7 +34,7 @@ const IndexPage = ({ data }) => {
       ),
       alt: "Student taking classes online",
       content:
-        "Tri-County Urban Leage offers outstanding programs in all subjects that set students up for success.",
+        "Tri-County Urban League offers outstanding programs in all subjects that set students up for success.",
     },
     {
       pic: getImage(
@@ -74,10 +74,10 @@ const IndexPage = ({ data }) => {
       return (
         <TabPanel value={tabsValue} index={index} key={index}>
           <div className="md:flex mt-16 items-start">
-            <div className="w-100% md:w-5/12 max-h-96 overflow-hidden">
+            <div className="md:w-5/12 max-h-96 overflow-hidden">
               <GatsbyImage image={object.pic} alt={object.alt} />
             </div>
-            <div className="w-100% md:w-7/12 mt-8 sm:mt-0 sm:p-16">
+            <div className=" md:w-7/12 mt-8 sm:mt-0 sm:p-16">
               <p className="text-white text-center md:text-left leading-relaxed">
                 {object.content}
               </p>
