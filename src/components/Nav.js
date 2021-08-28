@@ -5,13 +5,11 @@ import { StaticImage } from "gatsby-plugin-image"
 
 const Nav = () => (
   <nav className="p-4 flex justify-between items-center">
-    <Link>
-      <StaticImage
-        className="w-48"
-        src="../images/TriCounty_Logo.png"
-        alt="Tri-county Urban League Logo"
-      />
-    </Link>
+    <StaticImage
+      className="w-48"
+      src="../images/TriCounty_Logo.png"
+      alt="Tri-county Urban League Logo"
+    />
     <a
       href="https://app.etapestry.com/hosted/Tri-CountyPeoriaUrbanLeague/Registration.html"
       target="_blank"

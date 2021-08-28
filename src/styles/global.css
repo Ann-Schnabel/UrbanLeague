@@ -13,10 +13,18 @@ svg {
     pointer-events: none;
 }
 
+#cityWrapper {
+    pointer-events: none;
+}
+
 .MuiTab-wrapper {
     color: white;
 }
 
 .MuiTabScrollButton-root svg path {
     fill: white;
+}
+
+.whiteIcon {
+    color: white;
 }
