@@ -4,27 +4,31 @@
 
 
 h2 {
-    font-size: xx-large;
-    font-weight: 700;
+  font-size: xx-large;
+  font-weight: 700;
 }
 
 svg {
-    opacity: .3;
-    pointer-events: none;
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 #cityWrapper {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .MuiTab-wrapper {
-    color: white;
+  color: white;
 }
 
 .MuiTabScrollButton-root svg path {
-    fill: white;
+  fill: white;
 }
 
 .whiteIcon {
-    color: white;
+  color: white;
+}
+
+.MuiSvgIcon-fontSizeSmall {
+  opacity: 1;
 }

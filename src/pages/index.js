@@ -73,14 +73,16 @@ const IndexPage = ({ data }) => {
     return TabsInfoObjects.map((object, index) => {
       return (
         <TabPanel value={tabsValue} index={index} key={index}>
-          <div className="flex mt-16 items-start">
-            <div className="w-5/12 h-96 overflow-hidden">
+          <div className="md:flex mt-16 items-start">
+            <div className="w-100% md:w-5/12 max-h-96 overflow-hidden">
               <GatsbyImage image={object.pic} alt={object.alt} />
             </div>
-            <div className="w-5/12 p-16">
-              <p className="text-white leading-relaxed">{object.content}</p>
+            <div className="w-100% md:w-7/12 mt-8 sm:mt-0 sm:p-16">
+              <p className="text-white text-center md:text-left leading-relaxed">
+                {object.content}
+              </p>
               <a href="mailto:uleague@tcpul.com">
-                <button className="bg-white hover:bg-gray-300 text-gray-900 font-bold py-2 px-8 rounded-full mt-16">
+                <button className="bg-white hover:bg-gray-300 text-gray-900 font-bold py-2 px-8 rounded-full mt-8 md:mt-16 block mx-auto md:mx-0">
                   Request More Information
                 </button>
               </a>
@@ -102,15 +104,17 @@ const IndexPage = ({ data }) => {
           >
             <CityScape className="ml-24" />
           </div>
-          <h3 className="text-xl font-thin mb-4">
+          <h3 className="text-xl font-thin mb-4 text-center sm:text-left">
             Serving the Greater Peoria, IL and Tri-County area
           </h3>
-          <h1 className="text-6xl leading-relaxed font-black">
+          <h1 className="text-5xl sm:text-6xl text-center sm:text-left leading-snug sm:leading-relaxed font-black">
             Empowering Communities.
             <br />
-            Changing Lives.
+            <span className="italic font-semibold sm:font-bold">
+              Changing Lives.
+            </span>
           </h1>
-          <p className="w-7/12 mt-8 z-10">
+          <p className="w-100% md:w-7/12 mt-8 z-10">
             The Tri-County Urban League mission is to advance the regional
             economy and quality of life in Central Illinois by promoting
             education and improving the employability skills, self-sufficiency
@@ -121,9 +125,10 @@ const IndexPage = ({ data }) => {
             title="Discover Programs"
             className="z-10"
           >
-            <button className="mt-12 bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-8 rounded-full ">
-              Discover Programs
-            </button>
+            <p className="text-sm text-red-700 mt-16">
+              <span className="mr-4 text-xs">&#x25BC;</span> Scroll to Discover
+              Programs
+            </p>
           </AnchorLink>
         </section>
         <section className="bg-gray-700 px-24 py-16 -mx-24 mb-0">
@@ -135,6 +140,7 @@ const IndexPage = ({ data }) => {
               value={tabsValue}
               onChange={handleChange}
               variant="scrollable"
+              scrollButtons="on"
             >
               <Tab label="Daycare" />
               <Tab label="Youth" />
@@ -148,14 +154,14 @@ const IndexPage = ({ data }) => {
         </section>
       </main>
       <footer className="bg-gray-900 p-16 -mx-24">
-        <div className="flex justify-between">
-          <div className="flex">
+        <div className="md:flex justify-between">
+          <div>
             <a
               href="https://www.facebook.com/groups/150591081361"
               target="_blank"
               rel="noreferrer"
             >
-              <button className="bg-transparent hover:bg-white text-white hover:text-black font-bold py-2 px-4 rounded">
+              <button className="bg-transparent hover:bg-white text-white hover:text-black font-bold py-2 px-4 rounded block mx-auto md-mx-0">
                 Facebook
               </button>
             </a>
@@ -164,31 +170,35 @@ const IndexPage = ({ data }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <button className="bg-transparent hover:bg-white text-white hover:text-black font-bold py-2 px-4 rounded">
+              <button className="bg-transparent hover:bg-white text-white hover:text-black font-bold py-2 px-4 rounded block mx-auto md-mx-0">
                 Twitter
               </button>
             </a>
           </div>
-          <p className="text-white text-center">
+          <p className="text-white text-center mt-4">
             317 S. MacArthur Highway <br />
             Peoria, IL 61605
           </p>
-          <div>
-            <a className="text-white text-right" href="tel:309-673-7474">
-              phone: <span className="font-bold">309.673.7474</span>
+          <div className="mt-4 md:mt-0">
+            <a
+              className="text-white text-center md:text-right"
+              href="tel:309-673-7474"
+            >
+              <p className="text-white text-center md:text-right">
+                phone: <span className="font-bold">309.673.7474</span>
+              </p>
             </a>
-            <p className="text-white text-right">
+            <p className="text-white text-center md:text-right">
               fax: <span className="font-bold">309.672.4366</span>
             </p>
           </div>
         </div>
         <hr className="mt-4" />
-        <p className="text-white mt-4">
+        <p className="text-white mt-4 px-4 md:px-0">
           These programs have been made possible, in part, by a grant from the
           Heart of Illinois United Way, AT&T, Caterpillar. Inc., CEFCU, Comcast,
           Community Foundation of Central Illinois, National Urban League and
-          PNC Banks All rights Reserved •Tri-County Urban League • 317 S.
-          MacArthur Highway • Peoria IL 61605 • 309.673.7474
+          PNC Banks All rights Reserved.
         </p>
       </footer>
     </Layout>
