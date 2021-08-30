@@ -13,7 +13,7 @@ import "./layout.css"
 
 const Layout = ({ children }) => {
   return (
-    <div className="bg-gray-200">
+    <div className="bg-gray-200 min-h-screen">
       <Nav />
       <div
         className="px-8 sm:px-24 pt-6 max-w-96 mx-auto box-border" 
