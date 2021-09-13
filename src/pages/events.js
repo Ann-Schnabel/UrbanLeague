@@ -1,52 +1,101 @@
 import React from "react"
+import { graphql } from "gatsby"
+import moment from "moment"
+import { tz } from "moment-timezone"
 
 import Layout from "../components/layout"
 import Footer from "../components/Footer"
 import Seo from "../components/seo"
 
-const Events = () => {
+const Events = ({ data }) => {
+  console.log(data)
+
+  const eventsArray = [data.allContentfulEvents.edges[1], data.allContentfulEvents.edges[0]]
+
+  const renderEvent = (eventObj, index) => {
+    const datum = eventObj.node
+
+    const dateTime = moment(datum.dateTime).tz("America/Chicago")
+    const dateEnd = moment(datum.dateTimeEnd).tz("America/Chicago")
+
+    const dateDay = `${dateTime.format("MMM DD")}`
+
+    return (
+      <div
+        className="relative rounded-xl overflow-hidden min-w-sm max-w-sm mr-8 mb-8 bg-white self-stretch flex flex-col justify-between"
+        key={`Event-Card--${index}`}
+      >
+        <div>
+          <div className="w-full h-32 bg-gray-900" />
+          <div className="bg-white w-full p-8 mb-4">
+            <div>
+              <h3 className="text-2xl font-bold sm:text-left mt-4 mb-4">
+                {datum.eventName}
+              </h3>
+              <p className="text-xl font-thin sm:text-left">{`${datum.locationName}`}</p>
+              <p className="text-xl font-thin italic sm:text-left mb-4">{`${dateTime.format(
+                "ha"
+              )}–${dateEnd.format("ha")}`}</p>
+              <p>{datum.aboutEvent.aboutEvent}</p>
+            </div>
+          </div>
+        </div>
+        <p className="px-8 pb-8 font-bold">{datum.cost}</p>
+
+        <div className="bg-white rounded-full px-2 w-max absolute top-4 left-4">
+          <p className="">{dateDay}</p>
+        </div>
+        {datum.ticketLink && (
+          <a
+            href={datum.ticketLink}
+            target="_blank"
+            rel="noreferrer"
+            className="bg-red-700 rounded-full px-4 absolute top-4 right-4 text-white font-bold"
+          >
+            Buy Tickets
+          </a>
+        )}
+      </div>
+    )
+  }
+
   return (
     <Layout>
       <Seo title="Events" />
-      <h2>Upcoming Events</h2>
-      <div className="sm:flex items-center">
-        <h3 className="text-xl font-thin mb-4 sm:text-left mt-8">
-          Annual Jazz Brunch
-        </h3>
-        <a
-          href="https://app.etapestry.com/onlineforms/Tri-CountyPeoriaUrbanLeague/2021jazzbrunch.html"
-          rel="noreferrer"
-          target="_blank"
-          className="sm:ml-8"
-        >
-          <button className="bg-white hover:bg-gray-300 text-gray-900 font-bold py-2 px-8 rounded-full sm:mt-4">
-            Buy Tickets
-          </button>
-        </a>
+      <h2 className="mb-8">
+        Upcoming Events{" "}
+        <span className="font-thin">{`( ${data.allContentfulEvents.totalCount} )`}</span>
+      </h2>
+      <div className="flex mb-32 items-stretch flex-wrap mx-auto justify-center">
+        {eventsArray.map(eventObj => renderEvent(eventObj))}
       </div>
-      <p className="w-100% md:w-7/12 mt-0 z-10 mb-8 mt-8">
-        Join us in honoring Laraine Bryson’s 2021 Retirement. This Jazz Brunch
-        will feature The Judy Page Project. Tickets for individuals are $50.
-        Consider a Platinum, Gold or Silver Sponsorship. Click above for tickets
-        or call <a href="tel:309-673-7474">309-673-7474</a> for more
-        information.
-      </p>
-      <p className="mb-2">
-        <strong>Date:</strong> October 10, 2021
-      </p>
-      <p className="mb-2">
-        <strong>Time:</strong> 1pm-5pm
-      </p>
-      <p>
-        <strong>Location:</strong> Par-A-Dice Hotel Casino
-      </p>
-      <p className="mb-2">21 Blackjack Boulevard, East Peoria IL</p>
-      <p className="mb-64">
-        <strong>Tickets:</strong> $50 each. Tables of 8 available.
-      </p>
       <Footer />
     </Layout>
   )
 }
 
 export default Events
+
+export const data = graphql`
+  query MyQuery {
+    allContentfulEvents {
+      edges {
+        node {
+          cost
+          eventName
+          locationName
+          ticketLink
+          aboutEvent {
+            aboutEvent
+          }
+          addressString {
+            addressString
+          }
+          dateTime
+          dateTimeEnd
+        }
+      }
+      totalCount
+    }
+  }
+`
